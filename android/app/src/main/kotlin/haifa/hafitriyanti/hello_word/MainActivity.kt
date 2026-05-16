@@ -1,0 +1,5 @@
+package haifa.hafitriyanti.hello_word
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity : FlutterActivity()

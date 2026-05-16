@@ -1,0 +1,44 @@
+[
+  {
+    "title" : "Rumah Sakit Yos Sudarso",
+    "image" : "images/h1.jpg",
+    "desc" : "Ketika Aku Sakit Kamu Merawat Aku di RS YOS SUDARSO PADANG Jl. Situjuh No. 1",
+    "latitude": -0.935471383225451,
+    "longitude": 100.3625540183051
+  },
+  {
+    "title" : "RSUP Dr. M. Djamil Padang",
+    "image" : "images/h2.jpg",
+    "desc" : " RSUP Dr M Djamil KEPUASAN ANDA ADALAH KEPEDULIAN KAMI",
+    "latitude": -0.9426593242159839,
+    "longitude": 100.36707013778512
+  },
+  {
+    "title" : "Rumah Sakit Khusus Bedah Ropanasuri Padang",
+    "image" : "images/h3.jpg",
+    "desc" : "Rumah Sakit Khusus Bedah (RSK) Ropanasuri merupakan rumah sakit swasta di Kota Padang yang memberikan pelayanan khusus bedah.",
+    "latitude": -0.9348375746067664,
+    "longitude": 100.35946769882149
+  },
+  {
+    "title" : "RS. Bhayangkara Padang",
+    "image" : "images/h4.jpg",
+    "desc" : " RS Bhayangkara TK III Padang berkomitmen memberikan pelayanan terbaik, tidak hanya secara medis tetapi juga melalui perhatian dan ...",
+    "latitude": -0.9322303208496812,
+    "longitude": 100.36574797438536
+  },
+  {
+    "title" : "RSU Selaguri",
+    "image" : "images/h5.jpg",
+    "desc" : "Rumah Sakit Selaguri berada dibawah naungan PT Selaguri Citratama Medika Padang dan berlokasi di Padang, Sumatera Barat. Rumah Sakit menyediakan layanan ...",
+    "latitude": -0.9419616101183096,
+    "longitude": 100.35792517494001
+  },
+  {
+    "title" : "RUMAH SAKIT NAILI DBS",
+    "image" : "images/h6.jpg",
+    "desc" : "umah Sakit Naili DBS Padang merupakan Rumah Sakit Umum milik Swasta bertipe C yang berada di Padang, Sumatera Barat.",
+    "latitude": -0.9445259677473825,
+    "longitude": 100.3591076802773
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "title" : "Agak Laen",
+    "image" : "images/movie1.jpg",
+    "desc" : "Ini adalah movie ke-1"
+  },
+  {
+    "title" : "Teka Teki Tika",
+    "image" : "images/movie2.jpg",
+    "desc" : "Ini adalah movie ke-2"
+  },
+  {
+    "title" : "Home Sweet Loan",
+    "image" : "images/movie3.jpg",
+    "desc" : "Ini adalah movie ke-3"
+  },
+  {
+    "title" : "Ancika",
+    "image" : "images/movie4.jpg",
+    "desc" : "Ini adalah movie ke-4"
+  },
+  {
+    "title" : "Komang",
+    "image" : "images/movie5.jpg",
+    "desc" : "Ini adalah movie ke-5"
+  },
+  {
+    "title" : "Sisi Lain",
+    "image" : "images/movie6.jpg",
+    "desc" : "Ini adalah movie ke-6"
+  }
+]
