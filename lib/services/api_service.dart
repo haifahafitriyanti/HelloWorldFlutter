@@ -3,9 +3,14 @@ import 'package:hello_word/models/model_users.dart';
 import 'package:http/http.dart' as http;
 import 'package:hello_word/models/model_photos.dart';
 
+import '../models/model_berita.dart';
+
 class ApiService {
   static const String urlPhotos = "https://jsonplaceholder.typicode.com/photos";
   static const String urlUsers = "https://jsonplaceholder.typicode.com/users";
+
+  static const String urlGambarBerita = "http://172.20.10.2/berita_api/gambar/";
+  static const String urlGetBerita = "http://172.20.10.2/berita_api/getBerita.php";
 
   static Future<List<ModelPhotos>> fetchDataPhotos() async{
     final response = await http.get(Uri.parse(urlPhotos));
@@ -15,6 +20,16 @@ class ApiService {
       return jsonData.take(50) //dibatasi 50 data dulu
           .map((e) => ModelPhotos.fromJson(e))
           .toList();
+    }else{
+      throw Exception("Gagal mengambil data");
+    }
+  }
+
+  static Future<List<Datum>> getDataBerita() async{
+    final response = await http.get(Uri.parse(urlGetBerita));
+
+    if (response.statusCode == 200){
+      return modelBeritaFromJson(response.body).data;
     }else{
       throw Exception("Gagal mengambil data");
     }

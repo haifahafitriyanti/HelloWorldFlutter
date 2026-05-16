@@ -3,6 +3,7 @@ import 'package:hello_word/pages/MAPS/page_maps.dart';
 import 'package:hello_word/pages/kisikisiuts/page_hospital.dart';
 import 'package:hello_word/pages/page_gambar1.dart';
 import 'package:hello_word/pages/page_gambar2.dart';
+import 'package:hello_word/pages/page_list_berita.dart';
 import 'package:hello_word/pages/page_listview.dart';
 import 'package:hello_word/pages/page_movie_grid.dart';
 import 'package:hello_word/pages/page_photos_json.dart';
@@ -174,6 +175,15 @@ class PageUtama extends StatelessWidget {
                   Navigator.push(context, MaterialPageRoute(builder: (context)=> PageHospital())); //dari class A ke class B
                 },
                 child: Text('Kisi Kisi UTS'),
+              ),
+
+              SizedBox(height: 10,),
+              MaterialButton(
+                color: Colors.white70,
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> PageListBerita())); //dari class A ke class B
+                },
+                child: Text('Berita'),
               ),
             ],
           ),
