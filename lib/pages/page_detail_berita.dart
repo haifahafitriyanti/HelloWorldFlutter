@@ -23,7 +23,7 @@ class PageDetailBerita extends StatelessWidget {
           children: [
 
             Image.network(
-              "http://172.20.10.2/berita_api/gambar/${berita.gambarBerita}",
+              "http://10.35.170.71/berita_api/gambar/${berita.gambarBerita}",
               webHtmlElementStrategy: WebHtmlElementStrategy.prefer, //agar bisa keluar gambar di web
               width: double.infinity,
               height: 250,

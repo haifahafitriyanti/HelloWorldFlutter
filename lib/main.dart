@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hello_word/dasar/page_utama.dart';
+import 'package:hello_word/helper/session_manager.dart';
 import 'package:hello_word/pages/form_register.dart';
 import 'package:hello_word/pages/page_home_movie.dart';
+import 'package:hello_word/pages/page_list_berita.dart';
 import 'package:hello_word/pages/page_listview.dart';
 import 'package:hello_word/pages/MAPS/page_maps.dart';
+import 'package:hello_word/pages/page_login.dart';
 import 'package:hello_word/pages/page_movie_grid.dart';
 import 'package:hello_word/pages/page_photos_json.dart';
 import 'package:hello_word/pages/page_row_column.dart';
@@ -42,7 +45,36 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const PageUtama(),
+      //gunakan future builder untuk cek session
+      home: FutureBuilder(
+        future: SessionManager.isLogin(), builder: (context, snapshot) {
+        //jika proses cek masih berjalan, tampilkan load
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Scaffold(body: Center(child: CircularProgressIndicator(),),);
+        }
+        //jika sudah login, ambil data user dan arahkan ke page home
+        if (snapshot.hasData && snapshot.data == true) {
+          return FutureBuilder<Map<String, String?>>(
+              future: SessionManager.getUserSession(),
+              builder: (context, userSnapshot) {
+                if (userSnapshot.connectionState == ConnectionState.waiting) {
+                  return Scaffold(
+                    body: Center(child: CircularProgressIndicator(),),);
+                }
+                //karena data dari shared preferences berupa string,
+                //kita cast atau converrt ke map untuk bisa ambil data
+                final userData = Map<String, dynamic>.from(
+                    userSnapshot.data ?? {});
+                return PageListBerita();
+              }
+          );
+        }
+
+        //jika belum login, tampilkan page login
+        return PageLogin();
+      },
+      ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

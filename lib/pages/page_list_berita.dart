@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hello_word/helper/session_manager.dart';
 import 'package:hello_word/pages/page_detail_berita.dart';
+import 'package:hello_word/pages/page_login.dart';
 import 'package:hello_word/services/api_service.dart';
 import 'package:hello_word/models/model_berita.dart';
 
@@ -18,10 +20,27 @@ class _PageListBeritaState extends State<PageListBerita> {
 
   final TextEditingController _searchCtrl = TextEditingController();
 
+  //variabel penampung data login dari shared preferences
+  String? username;
+  String? email;
+  String? id;
+  String? tglDaftar;
+
   @override
   void initState() {
     super.initState();
     futureBerita = ApiService.getDataBerita();
+    _loadUserData();
+  }
+
+  void _loadUserData() async {
+    final userData = await SessionManager.getUserSession();
+    setState(() {
+      username = userData['username'];
+      email = userData['email'];
+      id = userData['id'];
+      tglDaftar = userData['tgl_daftar'];
+    });
   }
 
   @override
@@ -49,8 +68,24 @@ class _PageListBeritaState extends State<PageListBerita> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('List Berita'),
+        //tampilkan usert name jika berhasil
+        title: Text(username != null? "Selamat Data $username" : "List Berita"),
         backgroundColor: Colors.purpleAccent,
+        actions: [
+          IconButton(
+              icon : const Icon(Icons.exit_to_app),
+              onPressed: (){
+                setState(() {
+                  //logout
+                  SessionManager.logout();
+                  Navigator.pushReplacement(
+                      context,
+                  MaterialPageRoute(builder: (context) => PageLogin()),
+                  );
+                });
+              },
+          ),
+        ],
       ),
 
       body: FutureBuilder<List<Datum>>(
@@ -223,7 +258,7 @@ class _PageListBeritaState extends State<PageListBerita> {
               ),
 
               child: Image.network(
-                "http://172.20.10.2/berita_api/gambar/${berita.gambarBerita}",
+                "http://10.35.170.71/berita_api/gambar/${berita.gambarBerita}",
 
                 webHtmlElementStrategy:
                 WebHtmlElementStrategy.prefer,
