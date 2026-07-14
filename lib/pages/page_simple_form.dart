@@ -78,7 +78,7 @@ class _PageSimpleFormState extends State<PageSimpleForm> {
                 String nUsername = txtUsername.text;
                 String nPassword = txtPassword.text;
 
-                print("Username anda adalah " + nUsername + " dan Password ${nPassword}");
+                print("Username anda adalah $nUsername dan Password $nPassword");
 
                 if (nUsername == "admin" && nPassword == "admin") {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => const PageUtama(),

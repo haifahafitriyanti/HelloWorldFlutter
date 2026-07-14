@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_word/helper/session_manager.dart';
 import 'package:hello_word/pages/page_detail_berita.dart';
+import 'package:hello_word/pages/page_insert_berita.dart';
 import 'package:hello_word/pages/page_login.dart';
 import 'package:hello_word/services/api_service.dart';
 import 'package:hello_word/models/model_berita.dart';
@@ -25,6 +26,7 @@ class _PageListBeritaState extends State<PageListBerita> {
   String? email;
   String? id;
   String? tglDaftar;
+  String? level;
 
   @override
   void initState() {
@@ -40,6 +42,7 @@ class _PageListBeritaState extends State<PageListBerita> {
       email = userData['email'];
       id = userData['id'];
       tglDaftar = userData['tgl_daftar'];
+      level = userData['level'];
     });
   }
 
@@ -66,6 +69,8 @@ class _PageListBeritaState extends State<PageListBerita> {
 
   @override
   Widget build(BuildContext context) {
+    final isAdmin = level == 'admin';
+
     return Scaffold(
       appBar: AppBar(
         //tampilkan usert name jika berhasil
@@ -210,7 +215,7 @@ class _PageListBeritaState extends State<PageListBerita> {
 
                     itemBuilder: (context, index) {
                       return _buildBeritaCard(
-                        _filteredBerita[index],
+                        _filteredBerita[index], isAdmin
                       );
                     },
                   ),
@@ -220,10 +225,17 @@ class _PageListBeritaState extends State<PageListBerita> {
           );
         },
       ),
+      floatingActionButton: isAdmin ? FloatingActionButton(onPressed: () {
+        Navigator.push(
+          context, MaterialPageRoute(builder: (_) => PageInsertBerita()),
+        );
+      },
+        child: Icon(Icons.add),
+      ): null //kalau kembali
     );
   }
 
-  Widget _buildBeritaCard(Datum berita) {
+  Widget _buildBeritaCard(Datum berita, bool isAdmin) {
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
@@ -258,7 +270,7 @@ class _PageListBeritaState extends State<PageListBerita> {
               ),
 
               child: Image.network(
-                "http://10.35.170.71/berita_api/gambar/${berita.gambarBerita}",
+                "http://10.20.31.67/berita_api/gambar/${berita.gambarBerita}",
 
                 webHtmlElementStrategy:
                 WebHtmlElementStrategy.prefer,
@@ -266,13 +278,11 @@ class _PageListBeritaState extends State<PageListBerita> {
                 height: 200,
                 width: double.infinity,
                 fit: BoxFit.cover,
-
-                errorBuilder:
-                    (context, error, stackTrace) {
+                //tambahkan penangganan error dibawah ini
+                errorBuilder: (context, error, stackTrace) {
                   return Container(
                     height: 200,
                     color: Colors.grey.shade300,
-
                     child: const Center(
                       child: Icon(
                         Icons.broken_image,

@@ -1,19 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hello_word/dasar/page_utama.dart';
 import 'package:hello_word/helper/session_manager.dart';
-import 'package:hello_word/pages/form_register.dart';
-import 'package:hello_word/pages/page_home_movie.dart';
 import 'package:hello_word/pages/page_list_berita.dart';
-import 'package:hello_word/pages/page_listview.dart';
-import 'package:hello_word/pages/MAPS/page_maps.dart';
 import 'package:hello_word/pages/page_login.dart';
-import 'package:hello_word/pages/page_movie_grid.dart';
-import 'package:hello_word/pages/page_photos_json.dart';
-import 'package:hello_word/pages/page_row_column.dart';
-import 'package:hello_word/pages/page_search_listview.dart';
-import 'package:hello_word/pages/page_simple_form.dart';
-import 'package:hello_word/pages/page_stack.dart';
-import 'package:hello_word/pages/page_users_json.dart';
 
 void main() {
   runApp(const MyApp());

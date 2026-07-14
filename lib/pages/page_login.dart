@@ -41,11 +41,15 @@ class _PageLoginState extends State<PageLogin> {
 
       final data = jsonDecode(response.body); // pindah ke dalam try + tambah ;
       if (data['is_success'] == true) {
+
         _showSnackBar('Berhasil login');
         //arahkan ke page berita list
 
         //simpan data session
         await SessionManager.saveUserSession(data['data']);
+
+        if(!mounted) return;
+        _showSnackBar("Berhasil login");
         //arahkan ke page berita list
         Navigator.push(
           context,

@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:hello_word/models/movie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hello_word/main.dart';
 import 'package:hello_word/pages/page_detail_movie.dart';
 
 class PageHomeMovie extends StatefulWidget {

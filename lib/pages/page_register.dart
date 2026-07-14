@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:hello_word/pages/page_list_berita.dart';
 import 'package:hello_word/pages/page_login.dart';
 import 'package:hello_word/services/api_service.dart';
 import 'package:http/http.dart' as http;
@@ -52,7 +51,7 @@ class _PageRegisterState extends State<PageRegister> {
         _showSnackBar('Gagal register');
       }
     } catch (e) {
-      _showSnackBar('Terjadi kesalahan saat melakukan registrasi ${e}');
+      _showSnackBar('Terjadi kesalahan saat melakukan registrasi $e');
     }
   }
 
